@@ -2,6 +2,7 @@ var chokidar = require('chokidar');
 var fs = require('fs');
 var request = require('request');
 var http = require('http');
+//var URL = 'http://localhost:1337';
 var URL = 'http://192.168.1.184:1337';
 
 var timestamp = -1;

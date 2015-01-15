@@ -2,7 +2,7 @@ var chokidar = require('chokidar');
 var fs = require('fs');
 var request = require('request');
 var http = require('http');
-var URL = 'http://localhost';
+var URL = 'http://192.168.1.184:1337';
 
 var timestamp = -1;
 
@@ -90,7 +90,11 @@ var serverListener = setInterval(function() {
         downloadFile(remoteFileList[i].filename);
       } else {
         //deleteFile(remoteFileList[i].filename);
-        fs.unlinkSync(__dirname + '/box/' + remoteFileList[i].filename);
+        try {
+          fs.unlinkSync(__dirname + '/box/' + remoteFileList[i].filename);
+        } catch (err) {
+          console.log(err);
+        }
       }
     }
     fs.writeFileSync(__dirname + '/timestamp.dat', timestamp);
